@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.demo.gerardo_tarazona.demoapp.LoginActivity">
+
+
+
+    <LinearLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:text="@string/title"
+            android:typeface="sans"
+            android:textColor="@color/colorAccent"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:paddingTop="40dp"
+            android:paddingBottom="40dp"
+            />
+        <EditText
+            android:paddingTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/email_img"
+            android:id="@+id/email_login"
+            android:textSize="16sp"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+            />
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/lock"
+            android:hint="@string/hint_password"
+            android:id="@+id/password"
+            android:textSize="16sp"
+            android:inputType="textPassword"
+
+            />
+
+        <Button
+            android:textSize="16sp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="@string/Sign_In"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/White"
+            android:id="@+id/signIn"/>
+        <TextView
+            android:textSize="18sp"
+            android:paddingTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/forgot_password"
+            android:gravity="center"
+            android:paddingBottom="40dp"
+            android:id="@+id/forgot_pass"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingBottom="40dp"
+            android:text="@string/without_account"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:textSize="18sp"
+            android:id="@+id/text_register"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

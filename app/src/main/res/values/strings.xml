@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">DemoApp</string>
+    <string name="title">DEMO APP</string>
+    <string name="hint_email">  Email</string>
+    <string name="hint_password">Password</string>
+    <string name="Sign_In">Sign In</string>
+    <string name="forgot_password">¿Olvidaste tu Contraseña?</string>
+    <string name="without_account">¿No Tienes cuenta aún? - Registro</string>
+    <string name="register">Registro</string>
+    <string name="already_has_account">¿Ya tienes cuenta? - Login</string>
+    <string name="name">Nombre</string>
+    <string name="age">Edad</string>
+    <string name="insert_pass">Inserte el Password</string>
+    <string name="insert_email">Inserte el Email</string>
+    <string name="login_process">Iniciando Sesión...</string>
+    <string name="register_process">Registrando espere...</string>
+    <string name="could_not_register">No se pudo registrar el usuario</string>
+    <string name="registered_successfully">Registrado Exitoso</string>
+    <string name="insert_name">Ingrese su Nombre</string>
+    <string name="insert_age">Ingrese su Edad</string>
+    <string name="logout">Salir</string>
+</resources>

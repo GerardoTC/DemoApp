@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.demo.gerardo_tarazona.demoapp.RegisterActivity">
+
+
+    <LinearLayout
+        android:id="@+id/layout_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/title"
+            android:text="@string/title"
+            android:typeface="sans"
+            android:textColor="@color/colorAccent"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:paddingTop="40dp"
+            android:paddingBottom="40dp"
+            android:gravity="center"
+            />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/person_img"
+            android:id="@+id/name"
+            android:textSize="16sp"
+            android:hint="@string/name"
+            android:inputType="textPersonName"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/age_img"
+            android:id="@+id/age"
+            android:textSize="16sp"
+            android:hint="@string/age"
+            android:inputType="number"
+
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/email_img"
+            android:id="@+id/email_register"
+            android:textSize="16sp"
+            android:hint="@string/hint_email"
+            android:inputType="textEmailAddress"
+
+            />
+        <EditText
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/lock"
+            android:hint="@string/hint_password"
+            android:id="@+id/password_register"
+            android:textSize="16sp"
+            android:inputType="textPassword"
+            />
+
+        <Button
+            android:textSize="16sp"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="@color/White"
+            android:id="@+id/register"/>
+        <TextView
+            android:id="@+id/login_already_account"
+            android:textSize="18sp"
+            android:paddingTop="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/already_has_account"
+            android:gravity="center"
+            android:paddingBottom="40dp"
+            />
+
+
+    </LinearLayout>
+</RelativeLayout>
