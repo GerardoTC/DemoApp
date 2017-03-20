@@ -11,6 +11,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -41,17 +42,24 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        super.onStart();
+        databaseReference.orderByChild("name");
+
+
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
+
+
                 for(DataSnapshot UserSnapShot:dataSnapshot.getChildren()){
+
                     UserObject userInfo = UserSnapShot.getValue(UserObject.class);
                     userInfoList.add(userInfo);
 
                 }
+
                 UserAdapter adapter = new UserAdapter(ProfileActivity.this,userInfoList);
+
                 users.setAdapter(adapter);
             }
 

@@ -14,9 +14,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -44,8 +46,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
         if(firebaseAuth.getCurrentUser() !=null){
-            finish();
-            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+            if(firebaseAuth.getCurrentUser().isEmailVerified()) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+            }
         }
 
         editTextName = (EditText) findViewById(R.id.name);
@@ -99,25 +103,44 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         if(!(TextUtils.isEmpty(email)&&TextUtils.isEmpty(password)&&TextUtils.isEmpty(name)&&TextUtils.isEmpty(age))) {
 
-
-            String id = databaseReference.push().getKey();
             user = new UserObject(age,email,name);
 
-            databaseReference.child(id).setValue(user);
+
 
             progressDialog.setMessage(getString(R.string.register_process));
             progressDialog.show();
             progressDialog.setCancelable(false);
+
 
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     progressDialog.dismiss();
                     if (task.isSuccessful()) {
-                        finish();
-                        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                        Toast.makeText(getBaseContext(), getString(R.string.registered_successfully), Toast.LENGTH_SHORT).show();
+                        String id = databaseReference.push().getKey();
+
+                            FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+                                firebaseUser.sendEmailVerification();
+
+
+                            databaseReference.child(id).setValue(user);
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                            Toast.makeText(getBaseContext(), R.string.verify_email_to_complete_registration, Toast.LENGTH_SHORT).show();
+                            
+
+
+
+
                     } else {
+                        task.addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+
+                                Log.i("error_en_registro",e.getMessage());
+
+                            }
+                        });
                         Toast.makeText(getBaseContext(), getString(R.string.could_not_register), Toast.LENGTH_SHORT).show();
                     }
                 }
@@ -125,6 +148,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 
     }
+    
+
 
 
 

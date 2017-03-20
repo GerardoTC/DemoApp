@@ -21,6 +21,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     EditText editTextEmail;
     EditText editTextPassword;
     TextView textViewRegister;
+    TextView textRecovery;
     Button buttonSignIn;
     private ProgressDialog progressDialog;
     private FirebaseAuth firebaseAuth;
@@ -34,18 +35,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser()!=null){
-            finish();
-            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+            if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                finish();
+                startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+            }
+
         }
 
         editTextEmail = (EditText) findViewById(R.id.email_login);
         editTextPassword = (EditText) findViewById(R.id.password);
         textViewRegister = (TextView) findViewById(R.id.text_register);
+        textRecovery = (TextView) findViewById(R.id.forgot_pass);
         buttonSignIn = (Button) findViewById(R.id.signIn);
 
         buttonSignIn.setOnClickListener(this);
         textViewRegister.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
+        textRecovery.setOnClickListener(this);
 
 
     }
@@ -59,6 +65,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.text_register:
                 finish();
                 startActivity(new Intent(this,RegisterActivity.class));
+                break;
+            case R.id.forgot_pass:
+                startActivity(new Intent(this,UserRecovery.class));
                 break;
         }
     }
@@ -84,9 +93,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             progressDialog.dismiss();
+                            
                             if (task.isComplete()) {
-                                finish();
-                                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+
+                                if(firebaseAuth.getCurrentUser().isEmailVerified()){
+                                    finish();
+                                    startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                                }
                             }
                         }
                     }

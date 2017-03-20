@@ -15,8 +15,11 @@
     <string name="login_process">Iniciando Sesión...</string>
     <string name="register_process">Registrando espere...</string>
     <string name="could_not_register">No se pudo registrar el usuario</string>
-    <string name="registered_successfully">Registrado Exitoso</string>
+    <string name="registered_successfully">Registro Exitoso</string>
     <string name="insert_name">Ingrese su Nombre</string>
     <string name="insert_age">Ingrese su Edad</string>
     <string name="logout">Salir</string>
+    <string name="verify_email_to_complete_registration">Verifique su correo para completar el registro</string>
+    <string name="recovery_password">Recuperar</string>
+    <string name="email_recovery_pass_sent">Se han enviado instrucciones a tu correo</string>
 </resources>
